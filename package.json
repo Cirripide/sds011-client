@@ -41,9 +41,9 @@
     "url": "https://github.com/ivkos/sds011-client/issues"
   },
   "dependencies": {
-    "serialport": "^6.0.5"
+    "serialport": "^12.0.0"
   },
   "devDependencies": {
-    "mocha": "~3.5.3"
+    "mocha": "~10.4.0"
   }
 }

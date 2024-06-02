@@ -1,4 +1,4 @@
-const SerialPort = require('serialport');
+const { SerialPort } = require('serialport');
 const EventEmitter = require('events');
 const SensorState = require("./util/SensorState");
 const MessageHandlerUtils = require("./core/MessageHandlerUtils");
@@ -18,7 +18,13 @@ class SDS011Client extends EventEmitter
     constructor(portPath) {
         super();
 
-        this._port = new SerialPort(portPath, { baudRate: 9600 });
+        this._port = new SerialPort({
+            path: portPath,
+            baudRate: 9600,
+            dataBits: 8,
+            stopBits: 1,
+            parity: 'none'
+        });
         this._state = new SensorState();
         this._serialDataHandler = new SerialDataHandler();
         this._commandProcessor = new SensorCommandProcessor();
